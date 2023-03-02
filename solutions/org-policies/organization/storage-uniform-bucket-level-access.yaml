@@ -1,3 +1,4 @@
+---
 # Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,24 +21,23 @@
 #
 # Constraint: constraints/storage.uniformBucketLevelAccess
 #
-# This boolean constraint requires buckets to use uniform bucket-level access 
+# This boolean constraint requires buckets to use uniform bucket-level access
 # where this constraint is set to True. Any new bucket in the Organization resource
-# must have uniform bucket-level access enabled, and no existing buckets in the 
+# must have uniform bucket-level access enabled, and no existing buckets in the
 # organization resource can disable uniform bucket-level access.
 #
 #########
-
 apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: ResourceManagerPolicy
 metadata:
   name: storage-uniform-bucket-level-access
   namespace: policies
   labels:
-    guardrail: "true"
+    guardrail: 'true'
     guardrail-enforced: guardrail-02
 spec:
-  constraint: "constraints/storage.uniformBucketLevelAccess"
+  constraint: constraints/storage.uniformBucketLevelAccess
   booleanPolicy:
     enforced: true
   organizationRef:
-    external: "0000000000" # kpt-set: ${org-id}
+    external: '0000000000'  # kpt-set: ${org-id}

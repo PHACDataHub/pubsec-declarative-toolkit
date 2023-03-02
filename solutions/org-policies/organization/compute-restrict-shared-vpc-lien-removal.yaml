@@ -1,3 +1,4 @@
+---
 # Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +20,22 @@
 # https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints
 #
 # Constraint: constraints/compute.restrictXpnProjectLienRemoval
-# 
-# This boolean constraint restricts the set of users that can 
-# remove a Shared VPC project lien without organization-level 
+#
+# This boolean constraint restricts the set of users that can
+# remove a Shared VPC project lien without organization-level
 # permission where this constraint is set to True.
 #
 #########
-
 apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: ResourceManagerPolicy
 metadata:
   name: compute-restrict-shared-vpc-lien-removal
   namespace: policies
   labels:
-    guardrail: "false"
+    guardrail: 'false'
 spec:
-  constraint: "constraints/compute.restrictXpnProjectLienRemoval"
+  constraint: constraints/compute.restrictXpnProjectLienRemoval
   booleanPolicy:
     enforced: true
   organizationRef:
-    external: "0000000000" # kpt-set: ${org-id}
+    external: '0000000000'  # kpt-set: ${org-id}

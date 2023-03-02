@@ -1,3 +1,4 @@
+---
 # Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,27 +20,26 @@
 # https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints
 #
 # Constraint: constraints/storage.publicAccessPrevention
-# 
-# Secure your Cloud Storage data from public exposure by 
-# enforcing public access prevention. This governance policy 
-# prevents existing and future resources from being accessed 
-# via the public internet by disabling and blocking ACLs and 
+#
+# Secure your Cloud Storage data from public exposure by
+# enforcing public access prevention. This governance policy
+# prevents existing and future resources from being accessed
+# via the public internet by disabling and blocking ACLs and
 # IAM permissions that grant access to allUsers and allAuthenticatedUsers.
-# Enforce this policy on the entire organization (recommended), 
+# Enforce this policy on the entire organization (recommended),
 # specific projects, or specific folders to ensure no data is publicly exposed.
 #
 #########
-
 apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: ResourceManagerPolicy
 metadata:
   name: storage-public-access-prevention
   namespace: policies
   labels:
-    guardrail: "false"
+    guardrail: 'false'
 spec:
-  constraint: "constraints/storage.publicAccessPrevention"
+  constraint: constraints/storage.publicAccessPrevention
   booleanPolicy:
     enforced: true
   organizationRef:
-    external: "0000000000" # kpt-set: ${org-id}
+    external: '0000000000'  # kpt-set: ${org-id}
